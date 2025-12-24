@@ -1,5 +1,5 @@
 [package]
-name = "Socs-Calendar-Parser"
+name = "socs-calendar-parser"
 version = "0.1.0"
 edition = "2024"
 
