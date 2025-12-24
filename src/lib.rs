@@ -12,6 +12,40 @@ use chrono::NaiveDate;
 
 // need to make a recursive function that takes in a start and end date. and fetches all events between those dates
 // it has to be recursive because the API ends due to size limits
+/// Recursively fetches all calendar events between the given start and end dates.
+///
+/// This function handles the limitation of the SOCS API which may truncate results due to size limits.
+/// It fetches events in chunks, starting from the given start date and continuing until all events
+/// within the date range are retrieved. The function automatically handles pagination by using
+/// the date of the last retrieved event as the starting point for the next request.
+///
+/// Events are deduplicated by ID and sorted by start time before being returned.
+///
+/// # Arguments
+///
+/// * `base_url` - The base URL for the SOCS calendar API which you are given when you create a key
+/// * `start_date` - The start date for the event range (inclusive)
+/// * `end_date` - The end date for the event range (inclusive)
+///
+/// # Returns
+///
+/// Returns a `Result` containing a vector of `CalendarEvent`s if successful, or an error if the
+/// fetching or parsing fails.
+///
+/// # Examples
+///
+/// ```rust,no_run
+/// use chrono::NaiveDate;
+/// use socs_calendar_parser::fetch_events_recursive;
+///
+/// # async fn example() -> anyhow::Result<()> {
+/// let start = NaiveDate::from_ymd_opt(2025, 1, 1).unwrap();
+/// let end = NaiveDate::from_ymd_opt(2025, 12, 31).unwrap();
+/// let events = fetch_events_recursive("https://www.socscms.com/socs/xml/SOCScalendar.ashx?ID={}key={}", start, end).await?;
+/// println!("Found {} events", events.len());
+/// # Ok(())
+/// # }
+/// ```
 pub async fn fetch_events_recursive(
     base_url: &str,
     start_date: NaiveDate,
