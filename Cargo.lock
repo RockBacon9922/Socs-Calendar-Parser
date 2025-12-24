@@ -3,19 +3,6 @@
 version = 4
 
 [[package]]
-name = "Socs-Calendar-Parser"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "chrono",
- "reqwest",
- "rustls",
- "serde",
- "serde-xml-rs",
- "urlencoding",
-]
-
-[[package]]
 name = "android_system_properties"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -908,6 +895,19 @@ checksum = "17129e116933cf371d018bb80ae557e889637989d8638274fb25622827b03881"
 dependencies = [
  "libc",
  "windows-sys 0.60.2",
+]
+
+[[package]]
+name = "socs-calendar-parser"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "reqwest",
+ "rustls",
+ "serde",
+ "serde-xml-rs",
+ "urlencoding",
 ]
 
 [[package]]
