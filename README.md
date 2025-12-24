@@ -1,6 +1,6 @@
 # SOCS Calendar Parser
 
-A Rust library for fetching and parsing calendar events from SOCS (School Organisation and Curriculum System) APIs.
+A Rust library for fetching and parsing calendar events from SOCS APIs.
 
 ## Overview
 
